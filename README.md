@@ -23,13 +23,13 @@ Install-Module Microsoft.PowerShell.GraphicalTools
 
 Install PowerShell 6.2+ with [these instructions](https://github.com/PowerShell/PowerShell#get-powershell).
 
-### 3. Clone the GitHub repository:
+### 2. Clone the GitHub repository:
 
 ```
 git clone https://github.com/PowerShell/GraphicalTools.git
 ```
 
-### 4. Install [Invoke-Build](https://github.com/nightroman/Invoke-Build)
+### 3. Install [Invoke-Build](https://github.com/nightroman/Invoke-Build)
 
 ```powershell
 Install-Module InvokeBuild -Scope CurrentUser
