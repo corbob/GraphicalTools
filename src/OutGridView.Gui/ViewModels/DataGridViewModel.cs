@@ -26,6 +26,7 @@ namespace OutGridView.Application.ViewModels
     {
         private ReadOnlyObservableCollection<DataTableRow> _viewObjects;
         public ReadOnlyObservableCollection<DataTableRow> ViewObjects => _viewObjects;
+        public ReactiveCommand<Unit, Unit> CopyToClipboardCommand { get; }
 
         public SourceList<Column> Columns { get; } = new SourceList<Column>();
         private ReadOnlyObservableCollection<Column> _columnSelect;
@@ -39,6 +40,7 @@ namespace OutGridView.Application.ViewModels
             Columns.AddRange(columns);
 
             SelectionMode = OutputModeToSelectionMode(outputMode);
+            CopyToClipboardCommand = ReactiveCommand.Create(CopyToClipboard);
 
             this.WhenActivated((CompositeDisposable disposables) =>
             {
@@ -52,6 +54,11 @@ namespace OutGridView.Application.ViewModels
                     .Bind(out _viewObjects)
                     .Subscribe();
             });
+        }
+
+        private void CopyToClipboard()
+        {
+            Avalonia.Application.Current.Clipboard.SetTextAsync("Something...");
         }
 
         public DataGridSelectionMode OutputModeToSelectionMode(OutputModeOption outputModeOption)
